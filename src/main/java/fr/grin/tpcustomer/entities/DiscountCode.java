@@ -3,7 +3,6 @@ package fr.grin.tpcustomer.entities;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collection;
-import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,8 +11,6 @@ import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
 /**
  *
@@ -34,7 +31,7 @@ public class DiscountCode implements Serializable {
     @Column(name = "RATE")
     private BigDecimal rate;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "discountCode")
-    private Collection customerCollection;
+    private Collection<Customer> customerCollection;
 
     public DiscountCode() {
     }
@@ -59,11 +56,11 @@ public class DiscountCode implements Serializable {
         this.rate = rate;
     }
 
-    public Collection getCustomerCollection() {
+    public Collection<Customer> getCustomerCollection() {
         return customerCollection;
     }
 
-    public void setCustomerCollection(Collection customerCollection) {
+    public void setCustomerCollection(Collection<Customer> customerCollection) {
         this.customerCollection = customerCollection;
     }
 
