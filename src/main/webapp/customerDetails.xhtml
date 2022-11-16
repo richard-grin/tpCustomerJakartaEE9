@@ -12,7 +12,10 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h:form>
+        <h:outputText escape="false"
+            value="Aucun client avec l'id #{customerDetailsBean.idCustomer} ! &lt;br/>" 
+            rendered='#{customerDetailsBean.details == null}'/>
+        <h:form rendered='#{customerDetailsBean.details != null}'>
             <h1><h:outputText value="Create/Edit"/></h1>
             <h:panelGrid columns="2">
                 <h:outputLabel value="CustomerId:" for="customerId" />
@@ -48,12 +51,12 @@
                                    itemLabel="#{discountCode.discountCode} : #{discountCode.rate}"
                                    itemValue="#{discountCode}"/>
                 </h:selectOneMenu>
-                <h:button id="back" value="Revenir à la liste" 
-                          outcome="customerList"/>
                 <h:commandButton id="update" value="Enregistrer" 
                                  action="#{customerDetailsBean.update}"/>
             </h:panelGrid>
             <h:messages/>
         </h:form>
+        <h:button id="back" value="Revenir à la liste" 
+                  outcome="customerList"/>
     </h:body>
 </html>
